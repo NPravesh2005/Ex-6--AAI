@@ -1,7 +1,7 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>NAME : PRAVESH N</H3>
+<H3>REG NO : 212223230154</H3>
 <H3>EX. NO.6</H3>
-<H3>DATE:</H3>
+<H3>DATE: 28/10/25</H3>
 <H1 ALIGN =CENTER>Implementation of Semantic ANalysis</H1>
 <H3>Aim: to perform Parts of speech identification and Synonym using Natural Language Processing (NLP) techniques. </H3> 
  <BR>
@@ -18,11 +18,48 @@ Step 5:Iterate through each word in the tokenized text.<br>
 •	Print the unique sets of synonyms and antonyms.
 <H3>Program:</H3>
 
-Insert your code here
+```py
+!pip install nltk
+import nltk
+#import wordnet
+nltk.download( 'punkt' )
+nltk.download('wordnet')
+nltk.download('punkt_tab')
+from nltk.tokenize import word_tokenize
+nltk.download( 'averaged_perceptron_tagger' )
+nltk.download('averaged_perceptron_tagger_eng') # Download the correct resource
+sentence=input ()
+# Tokenize the sentence into words
+words = word_tokenize(sentence)
+# Identify the parts of speech for each word
+pos_tags= nltk.pos_tag(words)
+from nltk.corpus import wordnet
+
+# Identify synonyms and antonyms for each word
+synonyms =[]
+antonyms =[]
+for word in words:
+        for syn in wordnet.synsets(word) :
+                for lemma in syn.lemmas():
+                        synonyms . append (lemma . name( ) )
+                        if lemma . antonyms():
+                                antonyms . append ( lemma. antonyms ( ) [0] . name ( ) )
+# Print the synonyms and antonyms
+for word, tag in pos_tags:
+    print(word, tag)
+print ( "Synonyms : " ,set (synonyms) )
+print ( "Antonyms : " ,set(antonyms) )
+```
 
 <H3>Output</H3>
 
-Show your results here
+<img width="198" height="20" alt="Screenshot 2025-10-28 083106" src="https://github.com/user-attachments/assets/bc3a2359-e53f-4b64-b1f3-bccae98864e9" />
+
+
+<img width="141" height="60" alt="Screenshot 2025-10-28 083119" src="https://github.com/user-attachments/assets/fd5f219f-6853-464a-9eba-037f382347de" />
+
+
+<img width="1050" height="45" alt="Screenshot 2025-10-28 083145" src="https://github.com/user-attachments/assets/6c2b1157-86b3-4f3e-8243-10246ab13c23" />
 
 <H3>Result:</H3>
 Thus ,the program to perform the Parts of Speech identification and Synonymis executed sucessfully.
